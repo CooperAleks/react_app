@@ -1,0 +1,312 @@
+@import '../css/normalize.css';
+
+$primary: #006699;
+$border: 1px solid #ddd;
+
+@mixin table {
+	border-collapse: collapse;
+	border: $border;
+}
+
+@mixin table-item {
+	vertical-align: middle;
+	text-align: left;
+	padding: 0 7px;
+	border: $border;
+}
+
+@mixin table-caption {
+	font-weight: 700;
+	text-align: left;
+	border: $border;
+	border-bottom: 0;
+	padding: 13px;
+}
+
+@mixin delete-btn {
+	width: 100%;
+	height: 14px;
+	background-image: url('../image/icon-delete.png');
+	background-repeat: no-repeat;
+	display: block;
+	background-size: 100%;
+}
+
+@mixin arrow-btn {
+	background-image: url('../image/icon-arrow-right.png');
+	background-repeat: no-repeat;
+	width: 13px;
+	height: 13px;
+	display: block;
+	background-size: 100%;
+	transition: transform linear 0.2s;
+}
+
+@mixin header-item {
+	font-weight: 700;
+	padding-left: 10px;
+	padding-right: 8px;
+}
+
+body {
+	font-family: Helvetica, sans-serif;
+	font-size: 13px;
+	background-color: #fdfcfc;
+}
+
+h2 {
+	color: $primary;
+}
+
+ul {
+	margin: 0 0 20px 0;
+	padding: 0;
+
+	li {
+		list-style: none;
+		margin-bottom: 7px;
+	}
+}
+
+.user-contact {
+	margin-top: 20px;
+}
+
+.table-members {
+	@include table;
+	width: 98%;
+	margin: 15px auto 0;
+
+	.table-header {
+		background-color: #e7e7e7;
+		border: $border;
+
+		.header-item {
+			text-align: left;
+			@include header-item;
+			height: 50px;
+		}
+	}
+
+	.table-members-body {
+		width: 100%;
+
+		&:nth-child(odd) {
+			.info-box {
+				background-color: #f3f3f3;
+			}
+		}
+	
+		.info-box {
+			height: 35px;
+			background-color: #f9f9f9;
+			cursor: pointer;
+			transition: all linear 0.2s;
+
+			&.open {
+				background-color: #d4ead7;
+
+				.item {
+					&.arrow-item {
+						.arrow {
+							transform: rotateZ(90deg);
+						}
+					}
+
+					&.delete-item {
+						visibility: visible;
+						.delete-btn {
+							@include delete-btn;
+						}
+					}
+				}
+			}
+
+			.item {
+				@include table-item
+
+				&.arrow-item {
+					.arrow {
+						@include arrow-btn;
+					}
+				}
+
+				&.delete-item {
+					width: 13px;
+					
+					.delete-item {
+						visibility: hidden;
+					}
+				}
+			}
+
+			&:hover {
+				background-color: #d4ead7;
+				.item {
+					&.delete-item {
+						visibility: visible;
+						.delete-btn {
+							@include delete-btn;
+						}
+					}
+				}
+			}
+		}
+
+		.relatives-row {
+			transform: translateY(-100%);
+			transition: all linear 0.2s;
+			display:none;
+
+			.relatives-table {
+				width: 99%;
+			    margin: 26px auto;
+			    @include table;
+				
+				caption {
+					@include table-caption;
+				}
+
+				.relatives-table-header {
+					background-color: #efefef;
+					border: $border;
+
+					.relatives-header-item {
+						@include header-item;
+			    		text-align: center;
+			    		height: 35px;
+					}
+				}
+
+				.relatives-table-body {
+
+					&:nth-child(even) {
+						.relatives-info {
+							background-color: #f3f3f3;
+						}
+					}
+
+					.relatives-info {
+						height: 35px;
+						background-color: #f9f9f9;
+						cursor: pointer;
+						transition: all linear 0.2s;
+
+						&.open {
+							background-color: #d4ead7;
+
+							.item {
+								&.arrow-item {
+									.arrow {
+										transform: rotateZ(90deg);
+									}
+								}
+
+								&.delete-item {
+									visibility: visible;
+									.delete-btn {
+										@include delete-btn;
+									}
+								}
+							}
+						}
+
+						.item {
+							@include table-item;
+
+							&.arrow-item {
+								.arrow {
+									@include arrow-btn;
+								}
+							}
+
+							&.delete-item {
+								width: 13px;
+								
+								.delete-item {
+									visibility: hidden;
+								}
+							}
+						}
+
+						&:hover {
+							background-color: #d4ead7;
+							.item {
+								&.delete-item {
+									visibility: visible;
+									.delete-btn {
+										@include delete-btn;
+									}
+								}
+							}
+						}
+					}
+
+					.hasphone-table {
+						@include table;
+						width: 99%;
+			    		margin: 26px auto;
+
+						.hasphone-table-header {
+							background-color: #efefef;
+							border: $border;
+
+							.hasphone-header-item {
+								@include header-item;
+					    		text-align: center;
+					    		height: 35px;
+							}
+						}
+
+						.hasphone-table-body {
+							&:nth-child(even) {
+								.phones-table-info {
+									background-color: #f3f3f3;
+								}
+							}
+
+							.phones-table-info {
+								height: 35px;
+								background-color: #f9f9f9;
+
+								.item {
+									@include table-item
+
+									&.delete-item {
+										width: 13px;
+										cursor: pointer;
+										
+										.delete-item {
+											visibility: hidden;
+										}
+									}
+								}
+
+								&:hover {
+									background-color: #d4ead7;
+									.item {
+										&.delete-item {
+											visibility: visible;
+											.delete-btn {
+												@include delete-btn;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			&.active {
+				transform: translateY(0);
+				display: table-row;
+				transition: all linear 0.2s;
+			}
+		}
+	}
+
+	
+	
+}
