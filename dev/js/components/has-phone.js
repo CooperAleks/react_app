@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 
+
+// render has_phone
 class HasPhone extends Component {
     getHasPhoneHeaders() {
-        const hasPhoneKeys = Object.keys(this.props.users[this.props.indexParent].kids.has_relatives.records[this.props.indexKids].kids.has_phone.records[0].data);
+        const hasPhoneKeys = Object.keys(this.props.hasPhone.has_phone.records[0].data);
         const hasPhoneHeadersList = [];
 
         hasPhoneKeys.map((header, j) => {
             hasPhoneHeadersList.push(<th className='hasphone-header-item' key={'header' + j}>{header}</th>);
-            // <div className='kids-header-item fake-box'></div>
         })
 
         return (
@@ -22,7 +23,7 @@ class HasPhone extends Component {
 
     renderHasPhone() {
         const phoneData = [];
-        const phoneInfo =  this.props.users[this.props.indexParent].kids.has_relatives.records[this.props.indexKids].kids.has_phone.records;
+        const phoneInfo =  this.props.hasPhone.has_phone.records;
         phoneInfo.map((phoneItem, z) => {
             phoneData.push(phoneItem);
         })
@@ -52,14 +53,14 @@ class HasPhone extends Component {
     }
 
     render() {
-        if (this.props.relatives.has_phone && 
+        if (this.props.hasPhone.has_phone && 
             this.props.itemOpened.indexOf(this.props.indexKids) != -1 &&
-            this.props.users[this.props.indexParent].kids.has_relatives.records[this.props.indexKids].kids.has_phone.records.length > 0) {
+            this.props.hasPhone.has_phone.records.length > 0) {
             return (
                 <tr>
                     <td colSpan='12'>
                         <table className='hasphone-table active'>
-                            <caption>{Object.keys(this.props.users[0].kids.has_relatives.records[0].kids)}</caption>
+                            <caption>{Object.keys(this.props.users[this.props.users.length-1].kids.has_relatives.records[0].kids)}</caption>
                             {this.getHasPhoneHeaders()}
                             {this.renderHasPhone()}
                         </table>

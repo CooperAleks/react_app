@@ -38,7 +38,7 @@ class MemberRow extends Component {
         // set kids from inner json object as state to pass forward + get all indexes + concat for UI behavior validation
         if (this.state.itemParents.indexOf(this.props.indexParent) == -1) {
             this.setState(
-                {   
+                {
                     kids: this.props.users[count].kids.has_relatives.records[index].kids,
                     indexKids: index,
                     indexParent: count,
@@ -89,7 +89,7 @@ class MemberRow extends Component {
                                 indexParent={this.props.indexTop}
                                 itemParents={this.state.itemParents}
                                 itemOpened={this.state.itemOpened}
-                                handleKidsClick={this.handleKidsClick.bind(this)} 
+                                handleKidsClick={this.handleKidsClick.bind(this)}
                                 handleClickUI={this.props.handleClickUI.bind(this)}
                                 handleDeleteClick={this.props.handleDeleteClick.bind(this)}
                             />

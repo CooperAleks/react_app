@@ -1,7 +1,5 @@
 # React/Sass/Redux Boilerplate
 
-Redux flow - http://i.imgur.com/DUiL9yn.png
-
 Boilerplate and guide for a React/Sass/Redux build.
 
 ## Getting Started

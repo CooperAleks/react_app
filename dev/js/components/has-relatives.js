@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import HasPhone from '../components/has-phone'
 
-class HasRelatives extends Component {
 
+// render has_relatives
+class HasRelatives extends Component {
     getRelativesHeaders() {
         const relativesKeys = Object.keys(this.props.users[this.props.indexClick].kids.has_relatives.records[0].data);
         const relativesHeadersList = [];
@@ -49,12 +50,12 @@ class HasRelatives extends Component {
                         this.props.indexParent == this.props.indexClick  && 
                         k == this.props.indexKids && 
                         <HasPhone 
-                            users={this.props.users} 
-                            relatives={this.props.memberRel} 
-                            itemParents={this.props.itemParents} 
-                            itemOpened={this.props.itemOpened} 
+                            users={this.props.users}
+                            hasPhone={this.props.memberRel}
                             indexKids={this.props.indexKids} 
-                            indexParent={this.props.indexParent} 
+                            indexParent={this.props.indexParent}
+                            itemParents={this.props.itemParents} 
+                            itemOpened={this.props.itemOpened}  
                             handleDeleteClick={this.props.handleDeleteClick.bind(this)}
                         />
                     }

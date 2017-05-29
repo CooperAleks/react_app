@@ -56,8 +56,7 @@ class UserList extends Component {
     }
 
     handleDeleteClick(indexMember, indexRelative, indexHasPhone, evt) {
-        console.log(indexMember, indexRelative, indexHasPhone)
-        // delete items by splicing
+        // get all indexes of items to get it and delete by splicing
         evt.stopPropagation();
         let users = this.state.users;
         let getDeleteItem;
@@ -65,15 +64,11 @@ class UserList extends Component {
         if (indexMember != -1 && indexRelative != -1 && indexHasPhone != -1 ) {
             getDeleteItem = users[indexMember].kids.has_relatives.records[indexRelative].kids.has_phone.records;
             getDeleteItem.splice(indexHasPhone, 1);
-            console.log('3rd lvl')
         } else if (indexMember != -1 && indexRelative != -1 && indexHasPhone == -1 ) {
             getDeleteItem = users[indexMember].kids.has_relatives.records;
             getDeleteItem.splice(indexRelative, 1);
-            console.log('2nd lvl')
         } else if (indexMember != -1 && indexRelative == -1 && indexHasPhone == -1 && users.length > 1) {
             users.splice(indexMember, 1);
-            console.log(indexMember)
-            console.log('1st lvl')
         } else if (users.length == 1) {
             alert('You can\'t delete last entry')
         }
@@ -94,7 +89,6 @@ class UserList extends Component {
                     itemActive: this.state.itemActive.concat([index])
                 }
             )
-            console.log(index)
         }
     }
 
