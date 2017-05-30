@@ -751,12 +751,7 @@ const family = [
 
 export default function(state, action) {
    switch (action.type) {
-      case 'DELETE_ITEM':
-         let itemDelete = action.index;
-         console.log('action');
-         return state.filter(family => family[index] != index)
-      default:
-         console.log('state');
+   default:
          return state || family
    }
    
